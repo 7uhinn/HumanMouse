@@ -43,7 +43,7 @@ As aforementioned, real-time images are taken and processed in a fraction of sec
 
   Finally, if 4 different contours (i.e. 4 fingers) are segmented, then double click mode is activated, ie the file the cursor was pointing at is selected and opened.
 
-  P.S.: To better understand this please go through the Youtube Video hyperlinked below.
+  P.S: To better understand this, please go through the video hyperlinked below.
 
 #### Technology used
 
