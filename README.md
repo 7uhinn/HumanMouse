@@ -77,7 +77,7 @@ To perform 'Double Click':
 
 ![Double Click](/images/dc.png)
 
-[Have a look at the Youtube video]()
+[Have a look at this video](https://drive.google.com/file/d/1SmrQV--efjpGY_e_8KmGJCTrvZoW0g2r/view?usp=sharing)
 
 #### Usage
 
