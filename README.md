@@ -77,7 +77,7 @@ To perform 'Double Click':
 
 ![Double Click](/images/dc.png)
 
-[Have a look at this video](https://drive.google.com/file/d/1SmrQV--efjpGY_e_8KmGJCTrvZoW0g2r/view?usp=sharing)
+[Have a look at this demonstrative video.](https://drive.google.com/file/d/1SmrQV--efjpGY_e_8KmGJCTrvZoW0g2r/view?usp=sharing)
 
 #### Usage
 
@@ -85,7 +85,7 @@ To perform 'Double Click':
 
 ```pip3 install -r requirements.txt```
 
-* The required dependancies will be installed.
+* The required dependencies will be installed.
 
 2. Clone this repository. 
 
