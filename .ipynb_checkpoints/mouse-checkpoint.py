@@ -45,6 +45,7 @@ def Traversal(FingersClosed,mouse,conts,img):
     if(FingersClosed==1): 
             FingersClosed=0
             mouse.release(Button.left) #release left click (traversal mode)
+            
     x1,y1,w1,h1 = cv2.boundingRect(conts[0]) 
     x2,y2,w2,h2 = cv2.boundingRect(conts[1]) #returns outscribed rectangle of the AOIs
     cv2.rectangle(img,(x1,y1),(x1+w1,y1+h1),(255,0,0),2)
@@ -91,23 +92,43 @@ def LeftClick(FingersClosed,mouse,conts,img):
     return FingersClosed
 
 def RightClick(conts,img,mouse):
-    x,y,w,h = cv2.boundingRect(conts[0]) #returns outscribed rectangle of the AOI
+    x1,y1,w1,h1 = cv2.boundingRect(conts[0]) 
+    x2,y2,w2,h2 = cv2.boundingRect(conts[1]) 
+    x3,y3,w3,h3 = cv2.boundingRect(conts[2]) #returns outscribed rectangle of the AOIs
+    
+    cv2.rectangle(img,(x1,y1),(x1+w1,y1+h1),(255,0,0),2)
+    cv2.rectangle(img,(x2,y2),(x2+w2,y2+h2),(255,0,0),2) 
+    cv2.rectangle(img,(x3,y3),(x3+w3,y3+h3),(255,0,0),2) #draws the rectangle
         
-    cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2) #draws the rectangle
+    mouse.press(Button.right)
+    
+def DoubleClick(conts,img,mouse):
+    x1,y1,w1,h1 = cv2.boundingRect(conts[0]) 
+    x2,y2,w2,h2 = cv2.boundingRect(conts[1]) 
+    x3,y3,w3,h3 = cv2.boundingRect(conts[2]) 
+    x4,y4,w4,h4 = cv2.boundingRect(conts[3]) #returns outscribed rectangle of the AOIs
+    
+    cv2.rectangle(img,(x1,y1),(x1+w1,y1+h1),(255,0,0),2)
+    cv2.rectangle(img,(x2,y2),(x2+w2,y2+h2),(255,0,0),2) 
+    cv2.rectangle(img,(x3,y3),(x3+w3,y3+h3),(255,0,0),2) 
+    cv2.rectangle(img,(x4,y4),(x4+w4,y4+h4),(255,0,0),2) #draws the rectangle   
         
-    mouse.press(Button.right) 
+    mouse.click(Button.left, 2)
     
 while True:
     conts, img = MorphologicalOperations(camx,camy,lB,uB)
     
-    if(len(conts)==2): #if there are 2 fingers apart
+    if(len(conts)==2): #if there are 2 fingers
         FingersClosed = Traversal(FingersClosed,mouse,conts,img)
         
     elif(len(conts)==1): #if the fingers join to make one large AOI (fingers closed)
         FingersClosed = LeftClick(FingersClosed,mouse,conts,img)
         
-    elif(len(conts)==3): #if there are 3 fingers apart
+    elif(len(conts)==3): #if there are 3 fingers 
         RightClick(conts,img,mouse)
+        
+    elif(len(conts)==4): #if there are 4 fingers
+        DoubleClick(conts,img,mouse)
         
     cv2.imshow("cam",img) #finally show image on the 'cam' window
     cv2.waitKey(5)
