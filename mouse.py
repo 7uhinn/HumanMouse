@@ -46,6 +46,8 @@ def Traversal(FingersClosed,mouse,conts,img):
             FingersClosed=0
             mouse.release(Button.left) #release left click (traversal mode)
             
+    cv2.putText(img,'Traversal',(10,230),cv2.FONT_HERSHEY_SIMPLEX,0.6,(0,0,255),thickness=2)
+            
     x1,y1,w1,h1 = cv2.boundingRect(conts[0]) 
     x2,y2,w2,h2 = cv2.boundingRect(conts[1]) #returns outscribed rectangle of the AOIs
     cv2.rectangle(img,(x1,y1),(x1+w1,y1+h1),(255,0,0),2)
@@ -76,6 +78,8 @@ def LeftClick(FingersClosed,mouse,conts,img):
     if(FingersClosed==0):
         FingersClosed=1
         mouse.press(Button.left) #perform left click
+        
+    cv2.putText(img,'LeftClick/Hold',(10,230),cv2.FONT_HERSHEY_SIMPLEX,0.6,(0,0,255),thickness=2)
 
     cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2) #draws the rectangle
         
@@ -96,6 +100,8 @@ def RightClick(conts,img,mouse):
     x2,y2,w2,h2 = cv2.boundingRect(conts[1]) 
     x3,y3,w3,h3 = cv2.boundingRect(conts[2]) #returns outscribed rectangle of the AOIs
     
+    cv2.putText(img,'RightClick',(10,230),cv2.FONT_HERSHEY_SIMPLEX,0.6,(0,0,255),thickness=2)
+    
     cv2.rectangle(img,(x1,y1),(x1+w1,y1+h1),(255,0,0),2)
     cv2.rectangle(img,(x2,y2),(x2+w2,y2+h2),(255,0,0),2) 
     cv2.rectangle(img,(x3,y3),(x3+w3,y3+h3),(255,0,0),2) #draws the rectangle
@@ -107,6 +113,8 @@ def DoubleClick(conts,img,mouse):
     x2,y2,w2,h2 = cv2.boundingRect(conts[1]) 
     x3,y3,w3,h3 = cv2.boundingRect(conts[2]) 
     x4,y4,w4,h4 = cv2.boundingRect(conts[3]) #returns outscribed rectangle of the AOIs
+    
+    cv2.putText(img,'DoubleClick',(10,230),cv2.FONT_HERSHEY_SIMPLEX,0.6,(0,0,255),thickness=2)
     
     cv2.rectangle(img,(x1,y1),(x1+w1,y1+h1),(255,0,0),2)
     cv2.rectangle(img,(x2,y2),(x2+w2,y2+h2),(255,0,0),2) 
