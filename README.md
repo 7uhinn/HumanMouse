@@ -14,12 +14,13 @@ In these times of COVID-19 pandemic, everybody has been locked down inside their
 
 Therefore, we decided to build a platform that takes in real-time videos of the finger gestures and performs mouse operations corresponding to them. In order to build that, we focused on four main things:
 
-* Color Detection
-We started with writing a python script that uses *OpenCV* among other libraries to facilitate color recognition. This was done to recognize the color of the sellotape wrapped to the finger. This will later help in segmentation.
-
-* Image Enhancement and Morphological Operations
+* Image Acquisition\
 Through the *wxpython* library we make use of the webcam to produce frames of images in real-time. All operations henceforth are applied to each input image.
 
+* Color Detection\
+We started with writing a python script that uses *OpenCV* among other libraries to facilitate color recognition. This was done to recognize the color of the sellotape wrapped to the finger. This will later help in segmentation.
+
+* Image Enhancement and Morphological Operations\
 Firstly, every image is converted from RGB format to HSV (Hue, Saturation, Value) format in order to better detect the color. This is done because colors in the RGB colorspace are coded using the three channels, hence, it is more difficult to segment an object in the image based on its color.  For this application, we are using shades of blue color as the target color range as the tape used is of blue color. However, you can use your own range as per the color of your sellotape.
 
 We create a primitive 'mask', i.e. an 8-bit binary image that renders 255 value to pixels falling under the given color range and 0 otherwise. However, this mask is extremely noisy and contains a lot more regions not required for segmentation. Here is where we apply Morphological Operations.
@@ -28,10 +29,10 @@ We use mainly two compound Morphological Operations: Opening (Erosion and then D
 
 This gives us a noise-free mask for segmentation.
 
-* Contour Segmentation and Numbering
+* Contour Segmentation and Numbering\
 The mask generated is element-wise multiplied to the original HSV image and the segmented region is obtained in the image. This segmented region or AOI (Area of Interest) is referred to as contour here. There might be multiple contours in the same image. Hence the coordinates of each contour are saved in a 2D array.
 
-* Corresponding Mouse Operation
+* Corresponding Mouse Operation\
 As aforementioned, real-time images are taken and processed in a fraction of second to give an *illusion* of real-time video capture. However, the relationship between the contour coordinates in each image defines what mouse operation is to be performed. 
 
 If 2 different contours (i.e. 2 fingers) are segmented, then traversal mode is activated, ie the position of the mouse can be manipulated (without holding). The Euclidean displacement of the center of the line joining the centers of the 2 contours between adjacent frames is calculated. This displacement (distance along with direction) is then translated into the size of the screen resolution. This is how the new position of the cursor is calculated. The actual movement of the cursor, however, happens with the help of *pynput* library.
@@ -66,17 +67,17 @@ To perform 'Traversal' i.e. changing position of cursor:
 
 To perform 'Left Click':
 
-![Traversal](/images/lc.png)
+![Left Click](/images/lc.png)
 
 To perform 'Right Click':
 
-![Traversal](/images/rc.png)
+![Right Click](/images/rc.png)
 
 To perform 'Double Click':
 
-![Traversal](/images/dc.png)
+![Double Click](/images/dc.png)
 
-[Have a look at the Youtube video](https://youtu.be/v8Lo2EIrgHc)
+[Have a look at the Youtube video]()
 
 #### Usage
 
