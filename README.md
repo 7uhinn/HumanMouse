@@ -81,19 +81,19 @@ To perform 'Double Click':
 
 #### Usage
 
-1. If you don't already have the required libraries: run this command 
+1. Clone this repository. 
+
+```git clone https://github.com/7uhinn/HumanMouse```   
+
+2. Move into the cloned repository.
+
+```cd HumanMouse```
+
+3. If you don't already have the required libraries: run this command 
 
 ```pip3 install -r requirements.txt```
 
 * The required dependencies will be installed.
-
-2. Clone this repository. 
-
-```git clone https://github.com/7uhinn/HumanMouse```   
-
-3. Move into the cloned repository.
-
-```cd HumanMouse```
 
 4. Now, apply sellotape to the both the index fingers, middle finger of one hand and the thumb of the other. After that run this command
 
