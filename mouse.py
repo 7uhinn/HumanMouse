@@ -106,7 +106,7 @@ def RightClick(conts,img,mouse):
     cv2.rectangle(img,(x2,y2),(x2+w2,y2+h2),(255,0,0),2) 
     cv2.rectangle(img,(x3,y3),(x3+w3,y3+h3),(255,0,0),2) #draws the rectangle
         
-    mouse.press(Button.right)
+    mouse.press(Button.right) #perform right click
     
 def DoubleClick(conts,img,mouse):
     x1,y1,w1,h1 = cv2.boundingRect(conts[0]) 
@@ -121,7 +121,7 @@ def DoubleClick(conts,img,mouse):
     cv2.rectangle(img,(x3,y3),(x3+w3,y3+h3),(255,0,0),2) 
     cv2.rectangle(img,(x4,y4),(x4+w4,y4+h4),(255,0,0),2) #draws the rectangle   
         
-    mouse.click(Button.left, 2)
+    mouse.click(Button.left, 2) #perform double click
     
 while True:
     conts, img = MorphologicalOperations(camx,camy,lB,uB)
